@@ -116,6 +116,7 @@
                     android:layout_height="50dp"
                     android:background="@color/colorPrimaryDark"
                     android:fontFamily="@font/ubuntu_medium"
+                    android:onClick="incQuantity"
                     android:text="-"
                     android:textColor="@android:color/white" />
 
@@ -133,6 +134,7 @@
                     android:layout_height="50dp"
                     android:background="@color/colorPrimaryDark"
                     android:fontFamily="@font/ubuntu_medium"
+                    android:onClick="decQuantity"
                     android:text="+"
                     android:textColor="@android:color/white" />
             </LinearLayout>
