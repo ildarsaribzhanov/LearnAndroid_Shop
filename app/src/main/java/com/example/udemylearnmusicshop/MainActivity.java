@@ -17,7 +17,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     int quantity = 1;
     Spinner spinner;
-    ArrayList instruments;
+    ArrayList<String> instruments;
     ArrayAdapter instrumentsAdapter;
 
     Map<String, Double> goodsMap;
@@ -29,10 +29,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initSpinner();
+        initGoodMap();
+    }
+
+    void initSpinner() {
         spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
-        instruments = new ArrayList();
+        instruments = new ArrayList<>();
 
         instruments.add("guitar");
         instruments.add("sax");
@@ -41,17 +46,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         instrumentsAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, instruments);
         instrumentsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(instrumentsAdapter);
+    }
 
-        goodsMap = new HashMap<String, Double>();
+    void initGoodMap() {
+        goodsMap = new HashMap<>();
         goodsMap.put("guitar", 500.00);
         goodsMap.put("sax", 800.00);
         goodsMap.put("violin", 900.00);
     }
 
-    public void incQuantity(View view) {
+    public void decQuantity(View view) {
         TextView quantityVal = findViewById(R.id.quantityVal);
-        ArrayList<Integer> age = new ArrayList<Integer>();
-        age.add(1);
 
         if (quantity <= 1) {
             return;
@@ -61,19 +66,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         quantityVal.setText(Integer.toString(quantity));
 
         double priceTotal = priceItm * quantity;
-        TextView priceView = findViewById(R.id.priceVal);
-        priceView.setText(Double.toString(priceTotal));
+        this.viewPrice(priceTotal);
     }
 
-
-    public void decQuantity(View view) {
+    public void incQuantity(View view) {
         TextView quantityVal = findViewById(R.id.quantityVal);
         quantity++;
         quantityVal.setText(Integer.toString(quantity));
 
         double priceTotal = priceItm * quantity;
-        TextView priceView = findViewById(R.id.priceVal);
-        priceView.setText(Double.toString(priceTotal));
+        this.viewPrice(priceTotal);
     }
 
     @Override
@@ -82,9 +84,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         priceItm = goodsMap.get(instrumentName);
 
         double priceTotal = priceItm * quantity;
-
-        TextView priceView = findViewById(R.id.priceVal);
-        priceView.setText(Double.toString(priceTotal));
+        this.viewPrice(priceTotal);
 
         ImageView instrumentPhoto = findViewById(R.id.instrumentPhoto);
 
@@ -101,6 +101,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 instrumentPhoto.setImageResource(R.drawable.violin);
                 break;
         }
+    }
+
+    public void viewPrice(double priceTotal) {
+        TextView priceView = findViewById(R.id.priceVal);
+        priceView.setText(Double.toString(priceTotal) + "$");
     }
 
     @Override

@@ -68,15 +68,16 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/priceTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:textAlignment="center"
                 android:text="Order Price"
                 android:textSize="20sp" />
 
@@ -116,13 +117,13 @@
                     android:layout_height="50dp"
                     android:background="@color/colorPrimaryDark"
                     android:fontFamily="@font/ubuntu_medium"
-                    android:onClick="incQuantity"
+                    android:onClick="decQuantity"
                     android:text="-"
                     android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/quantityVal"
-                    android:layout_width="50dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:text="1"
                     android:textAlignment="center"
@@ -134,7 +135,7 @@
                     android:layout_height="50dp"
                     android:background="@color/colorPrimaryDark"
                     android:fontFamily="@font/ubuntu_medium"
-                    android:onClick="decQuantity"
+                    android:onClick="incQuantity"
                     android:text="+"
                     android:textColor="@android:color/white" />
             </LinearLayout>
