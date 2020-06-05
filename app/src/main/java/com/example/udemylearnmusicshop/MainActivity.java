@@ -58,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         quantity--;
         quantityVal.setText(Integer.toString(quantity));
+
+        double priceTotal = priceItm * quantity;
+        TextView priceView = findViewById(R.id.priceVal);
+        priceView.setText(Double.toString(priceTotal));
     }
 
 
@@ -65,6 +69,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         TextView quantityVal = findViewById(R.id.quantityVal);
         quantity++;
         quantityVal.setText(Integer.toString(quantity));
+
+        double priceTotal = priceItm * quantity;
+        TextView priceView = findViewById(R.id.priceVal);
+        priceView.setText(Double.toString(priceTotal));
     }
 
     @Override
