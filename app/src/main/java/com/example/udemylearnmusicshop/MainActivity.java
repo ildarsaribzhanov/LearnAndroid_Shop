@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -84,6 +85,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         TextView priceView = findViewById(R.id.priceVal);
         priceView.setText(Double.toString(priceTotal));
+
+        ImageView instrumentPhoto = findViewById(R.id.instrumentPhoto);
+
+        switch (instrumentName) {
+            case "guitar":
+                instrumentPhoto.setImageResource(R.drawable.guitar);
+                break;
+
+            case "sax":
+                instrumentPhoto.setImageResource(R.drawable.sax);
+                break;
+
+            case "violin":
+                instrumentPhoto.setImageResource(R.drawable.violin);
+                break;
+        }
     }
 
     @Override
