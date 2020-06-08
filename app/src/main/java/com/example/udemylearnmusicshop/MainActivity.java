@@ -3,9 +3,11 @@ package com.example.udemylearnmusicshop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     String instrumentName;
     double priceItm;
 
+    EditText userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         initSpinner();
         initGoodMap();
+
+        userName = findViewById(R.id.userName);
     }
 
     void initSpinner() {
@@ -111,5 +117,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void addToCard(View view) {
+        Order order = new Order(userName.getText().toString(), instrumentName, quantity);
+
+        Log.d("order: ", order.toString());
     }
 }
