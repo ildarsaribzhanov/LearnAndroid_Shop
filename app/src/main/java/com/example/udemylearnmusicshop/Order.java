@@ -31,6 +31,10 @@ public class Order implements Parcelable {
         cost = Double.parseDouble(data[3]);
     }
 
+    public Double getTotalPrice() {
+        return amount * cost;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
