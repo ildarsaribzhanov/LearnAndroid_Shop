@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void addToCard(View view) {
-        Order order = new Order(userName.getText().toString(), instrumentName, quantity);
+        Order order = new Order(userName.getText().toString(), instrumentName, quantity, priceItm);
 
         Intent orderIntent = new Intent(MainActivity.this, OrderActivity.class);
         orderIntent.putExtra("order", order);
