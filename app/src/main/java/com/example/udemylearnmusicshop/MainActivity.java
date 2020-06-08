@@ -2,6 +2,7 @@ package com.example.udemylearnmusicshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -122,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void addToCard(View view) {
         Order order = new Order(userName.getText().toString(), instrumentName, quantity);
 
-        Log.d("order: ", order.toString());
+        Intent orderIntent = new Intent(MainActivity.this, OrderActivity.class);
+        orderIntent.putExtra("order", order);
+        startActivity(orderIntent);
     }
 }
