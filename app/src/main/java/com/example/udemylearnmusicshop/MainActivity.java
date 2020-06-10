@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     double priceItm;
 
     EditText userName;
+
+    Basket basket = new Basket();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,11 +121,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void addToCard(View view) {
-        Order order = new Order(userName.getText().toString(), instrumentName, quantity, priceItm);
+    public void addToBasket(View view) {
+        OrderItm orderItm = new OrderItm(instrumentName, quantity, priceItm);
 
+        basket.addItem(orderItm);
+    }
+
+    public void goToBasket(View view){
         Intent orderIntent = new Intent(MainActivity.this, OrderActivity.class);
-        orderIntent.putExtra("order", order);
+        orderIntent.putExtra("basket", basket);
         startActivity(orderIntent);
     }
 }

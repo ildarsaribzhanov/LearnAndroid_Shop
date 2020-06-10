@@ -3,32 +3,28 @@ package com.example.udemylearnmusicshop;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Order implements Parcelable {
-    String userName;
-
+public class OrderItm implements Parcelable {
     String instrument;
 
     Integer amount;
 
     Double cost;
 
-    Order() {
+    OrderItm() {
     }
 
-    Order(String userName, String instrument, int amount, Double cost) {
-        this.userName = userName;
+    OrderItm(String instrument, int amount, Double cost) {
         this.instrument = instrument;
         this.amount = amount;
         this.cost = cost;
     }
 
-    public Order(Parcel in) {
-        String[] data = new String[4];
+    public OrderItm(Parcel in) {
+        String[] data = new String[3];
         in.readStringArray(data);
-        userName = data[0];
-        instrument = data[1];
-        amount = Integer.parseInt(data[2]);
-        cost = Double.parseDouble(data[3]);
+        instrument = data[0];
+        amount = Integer.parseInt(data[1]);
+        cost = Double.parseDouble(data[2]);
     }
 
     public Double getTotalPrice() {
@@ -38,7 +34,6 @@ public class Order implements Parcelable {
     @Override
     public String toString() {
         return "Order{" +
-                "userName='" + userName + '\'' +
                 ", instrument='" + instrument + '\'' +
                 ", amount=" + amount +
                 ", cost=" + cost +
@@ -52,19 +47,19 @@ public class Order implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[]{userName, instrument, amount.toString(), cost.toString()});
+        dest.writeStringArray(new String[]{instrument, amount.toString(), cost.toString()});
     }
 
-    public static final Parcelable.Creator<Order> CREATOR = new Parcelable.Creator<Order>() {
+    public static final Parcelable.Creator<OrderItm> CREATOR = new Parcelable.Creator<OrderItm>() {
 
         @Override
-        public Order createFromParcel(Parcel source) {
-            return new Order(source);
+        public OrderItm createFromParcel(Parcel source) {
+            return new OrderItm(source);
         }
 
         @Override
-        public Order[] newArray(int size) {
-            return new Order[size];
+        public OrderItm[] newArray(int size) {
+            return new OrderItm[size];
         }
     };
 }

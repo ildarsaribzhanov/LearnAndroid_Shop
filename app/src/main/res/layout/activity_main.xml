@@ -149,7 +149,7 @@
         android:layout_marginTop="30dp"
         android:background="@color/colorPrimaryDark"
         android:fontFamily="@font/ubuntu_medium"
-        android:onClick="addToCard"
+        android:onClick="addToBasket"
         android:text="Add to Card"
         android:textColor="@android:color/white" />
 

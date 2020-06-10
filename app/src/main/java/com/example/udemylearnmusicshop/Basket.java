@@ -1,10 +1,25 @@
 package com.example.udemylearnmusicshop;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Basket {
+public class Basket implements Parcelable {
     HashMap<String, OrderItm> items = new HashMap<>();
+
+    public Basket(){}
+
+    protected Basket(Parcel in) {
+        ArrayList instruments = new ArrayList<OrderItm>();
+
+        in.readList(instruments, OrderItm.class.getClassLoader());
+
+        Log.d("instrument_list", instruments.toString());
+    }
 
     public void addItem(OrderItm itm) {
         if (items.get(itm.instrument) != null) {
@@ -24,4 +39,29 @@ public class Basket {
 
         return totalPrice;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        String[] res = {};
+
+        dest.writeList(new ArrayList(items.values()));
+    }
+
+    public static final Creator<Basket> CREATOR = new Creator<Basket>() {
+        @Override
+        public Basket createFromParcel(Parcel in) {
+            return new Basket(in);
+        }
+
+        @Override
+        public Basket[] newArray(int size) {
+            return new Basket[size];
+        }
+    };
 }
+
