@@ -30,6 +30,13 @@ public class Basket implements Parcelable {
         items.put(itm.instrument, itm);
     }
 
+    @Override
+    public String toString() {
+        return "Basket{" +
+                "items=" + items +
+                '}';
+    }
+
     public Double getTotalPrice() {
         Double totalPrice = 0.0;
 
