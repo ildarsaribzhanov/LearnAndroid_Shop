@@ -19,7 +19,10 @@ public class Basket implements Parcelable {
 
         in.readList(instruments, OrderItm.class.getClassLoader());
 
-        Log.d("instrument_list", instruments.toString());
+        for (int i = 0; i < instruments.size(); i++) {
+            OrderItm orderItm = (OrderItm) instruments.get(i);
+            items.put(orderItm.instrument, orderItm);
+        }
     }
 
     public void addItem(OrderItm itm) {
