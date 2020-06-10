@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -138,6 +139,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void goToBasket(View view) {
+        if (basket.isEmpty()) {
+            Toast errorToast = Toast.makeText(this, "Basket is empty", Toast.LENGTH_SHORT);
+
+            errorToast.show();
+            return;
+        }
+
         Intent orderIntent = new Intent(MainActivity.this, OrderActivity.class);
         orderIntent.putExtra("basket", basket);
         startActivity(orderIntent);

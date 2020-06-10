@@ -48,6 +48,10 @@ public class Basket implements Parcelable {
         return totalPrice;
     }
 
+    public boolean isEmpty() {
+        return this.items.isEmpty();
+    }
+
     @Override
     public int describeContents() {
         return 0;
