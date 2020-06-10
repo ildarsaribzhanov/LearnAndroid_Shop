@@ -9,39 +9,55 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Map;
+
 public class OrderActivity extends AppCompatActivity {
-    OrderItm orderItm;
+    Basket basket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
-        Intent orderIntent = getIntent();
+        Intent basketIntent = getIntent();
 
-        orderItm = (OrderItm) orderIntent.getParcelableExtra("order");
+        basket = (Basket) basketIntent.getParcelableExtra("basket");
 
-        setLayoutData(orderItm);
+        setLayoutData(basket);
     }
 
-    public void setLayoutData(OrderItm orderItm) {
-        TextView userView = findViewById(R.id.orderUserName);
-        TextView instrumentView = findViewById(R.id.orderInstrument);
-        TextView quantityView = findViewById(R.id.orderAmount);
-        TextView priceView = findViewById(R.id.orderPrice);
-        TextView TotalPriceView = findViewById(R.id.orderTotalPrice);
+    public void setLayoutData(Basket basket) {
+        TextView orderInfo = findViewById(R.id.orderInfo);
 
-        instrumentView.setText(orderItm.instrument);
-        quantityView.setText(orderItm.amount.toString());
-        priceView.setText(orderItm.cost.toString());
-        TotalPriceView.setText(orderItm.getTotalPrice().toString());
+        String infoMessage = "Order.\n\n";
+
+        for (Map.Entry<String, OrderItm> instrument : basket.items.entrySet()) {
+            OrderItm orderItm = instrument.getValue();
+
+            infoMessage += "Instrument: " + orderItm.instrument + "\n" +
+                    "Quantity: " + orderItm.amount.toString() + "\n" +
+                    "Cost: " + orderItm.cost.toString() + "\n" +
+                    "Price: " + orderItm.getTotalPrice().toString() + "$\n\n";
+        }
+
+        infoMessage += "-----\n\nTotal order price: " + basket.getTotalPrice().toString();
+
+        orderInfo.setText(infoMessage);
     }
 
     public void sendOrder(View view) {
-        String message = "Instrument: " + orderItm.instrument + "\n" +
-                "Amount: " + orderItm.amount.toString() + "\n" +
-                "Price One: " + orderItm.cost.toString() + "\n" +
-                "Total price: " + orderItm.getTotalPrice().toString();
+        String message = "Order:\n\n";
+
+        for (Map.Entry<String, OrderItm> instrument : basket.items.entrySet()) {
+            OrderItm orderItm = instrument.getValue();
+
+            message += "Instrument: " + orderItm.instrument + "\n" +
+                    "Amount: " + orderItm.amount.toString() + "\n" +
+                    "Cost: " + orderItm.cost.toString() + "$\n" +
+                    "Total instrument price: " + orderItm.getTotalPrice().toString() + "\n\n";
+        }
+
+        message += "-----\n\nTotal order price: " + basket.getTotalPrice().toString();
 
         Intent sendEmailIntent = new Intent(Intent.ACTION_SENDTO);
         sendEmailIntent.setData(Uri.parse("mailto:"));

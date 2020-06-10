@@ -7,105 +7,14 @@
     android:orientation="vertical"
     tools:context=".OrderActivity">
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/orderInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Customer name: "
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/orderUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=""
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Instrument: "
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/orderInstrument"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=""
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Quantity: "
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/orderAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=""
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Price: "
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/orderPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=""
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Total Price: "
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/orderTotalPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=""
-            android:textSize="20sp" />
-    </LinearLayout>
+        android:layout_marginLeft="10dp"
+        android:text=""
+        android:textSize="20sp" />
 
     <Button
         android:layout_width="match_parent"
