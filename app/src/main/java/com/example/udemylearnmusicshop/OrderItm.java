@@ -33,8 +33,8 @@ public class OrderItm implements Parcelable {
 
     @Override
     public String toString() {
-        return "Order{" +
-                ", instrument='" + instrument + '\'' +
+        return "OrderItm{" +
+                "instrument='" + instrument + '\'' +
                 ", amount=" + amount +
                 ", cost=" + cost +
                 '}';
