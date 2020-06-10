@@ -153,4 +153,15 @@
         android:text="Add to Card"
         android:textColor="@android:color/white" />
 
+    <Button
+        android:id="@+id/buttonBasket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="@font/ubuntu_medium"
+        android:onClick="goToBasket"
+        android:text="Basket"
+        android:textColor="@android:color/white" />
+
 </LinearLayout>
