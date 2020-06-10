@@ -11,7 +11,8 @@ import java.util.Map;
 public class Basket implements Parcelable {
     HashMap<String, OrderItm> items = new HashMap<>();
 
-    public Basket(){}
+    public Basket() {
+    }
 
     protected Basket(Parcel in) {
         ArrayList instruments = new ArrayList<OrderItm>();

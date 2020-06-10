@@ -19,6 +19,8 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     int quantity = 1;
     Spinner spinner;
+    TextView quantityView;
+
     ArrayList<String> instruments;
     ArrayAdapter instrumentsAdapter;
 
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         initGoodMap();
 
         userName = findViewById(R.id.userName);
+        quantityView = findViewById(R.id.quantityVal);
     }
 
     void initSpinner() {
@@ -64,23 +67,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void decQuantity(View view) {
-        TextView quantityVal = findViewById(R.id.quantityVal);
-
         if (quantity <= 1) {
             return;
         }
 
         quantity--;
-        quantityVal.setText(Integer.toString(quantity));
+        quantityView.setText(Integer.toString(quantity));
 
         double priceTotal = priceItm * quantity;
         this.viewPrice(priceTotal);
     }
 
     public void incQuantity(View view) {
-        TextView quantityVal = findViewById(R.id.quantityVal);
         quantity++;
-        quantityVal.setText(Integer.toString(quantity));
+        quantityView.setText(Integer.toString(quantity));
 
         double priceTotal = priceItm * quantity;
         this.viewPrice(priceTotal);
@@ -88,7 +88,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        instrumentName = spinner.getSelectedItem().toString();
+        String newInstrumentName = spinner.getSelectedItem().toString();
+
+        if (instrumentName == newInstrumentName) {
+            return;
+        }
+
+        instrumentName = newInstrumentName;
+
+        quantity = 1;
+        quantityView.setText(Integer.toString(quantity));
+
         priceItm = goodsMap.get(instrumentName);
 
         double priceTotal = priceItm * quantity;
@@ -127,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         basket.addItem(orderItm);
     }
 
-    public void goToBasket(View view){
+    public void goToBasket(View view) {
         Intent orderIntent = new Intent(MainActivity.this, OrderActivity.class);
         orderIntent.putExtra("basket", basket);
         startActivity(orderIntent);
